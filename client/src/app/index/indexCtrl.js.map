@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "indexCtrl.js",
+  "sourceRoot": "",
+  "sources": [
+    "indexCtrl.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;EAAA,OAAO,CAAC,MAAR,CAAe,QAAf,CACE,CAAC,UADH,CACc,WADd,EAC0B;IAAC,QAAD,EAAU,YAAV,EAAuB,WAAvB,EAAmC,SAAC,MAAD,EAAQ,UAAR,EAAmB,SAAnB;aAC1D;IAD0D,CAAnC;GAD1B;AAAA"
+}

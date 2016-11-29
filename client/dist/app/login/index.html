@@ -1,0 +1,32 @@
+<div class="row login-box">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">登陆</div>
+            <div class="panel-body">
+                <form action="">
+                    <div class="form-group">
+                        <label for="">用户名:</label>
+                        <input type="text" class="form-control" ng-model="userEntity.username" placeholder="请输入用户名">
+                    </div>
+                    <div class="form-group">
+                        <label for="">密码:</label>
+                        <input type="password" class="form-control" ng-model="userEntity.password" placeholder="请输入密码">
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" ng-model="rememberMe">记住我</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-4">
+                            <button class="btn btn-primary" style="width:100%" ng-click="doLogin()">登陆</button>
+                        </div>
+                        <div class="login-tip-box">
+                            <span>我要<a href="#/regist">注册</a></span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
