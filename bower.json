@@ -1,0 +1,17 @@
+{
+  "name": "tms_client",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "lvlay"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

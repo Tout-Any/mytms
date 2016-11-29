@@ -1,0 +1,23 @@
+{
+  "name": "tms_server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node .src/bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "debug": "~2.2.0",
+    "express": "~4.14.0",
+    "morgan": "~1.7.0"
+  },
+  "author": "lvlay",
+  "devDependencies": {
+    "coffee-script": "^1.11.1",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-develop-server": "^0.5.2",
+    "gulp-notify": "^2.2.0",
+    "run-sequence": "^1.2.2"
+  }
+}
