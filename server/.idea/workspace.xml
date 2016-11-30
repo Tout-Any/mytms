@@ -240,6 +240,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dist/docs" />
       <recent name="$PROJECT_DIR$/dist" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -346,12 +347,12 @@
       <updated>1480410067753</updated>
       <workItem from="1480410069075" duration="2205000" />
       <workItem from="1480412807730" duration="1779000" />
-      <workItem from="1480414616981" duration="8222000" />
+      <workItem from="1480414616981" duration="8241000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12206000" />
+    <option name="totallyTimeSpent" value="12225000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
