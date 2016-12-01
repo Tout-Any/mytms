@@ -7,7 +7,7 @@
         password: ''
       };
       $scope.rememberMe = false;
-      $scope.doLogin = function() {
+      return $scope.doLogin = function() {
         console.log($scope.userEntity);
         return $location.path('/').replace();
       };

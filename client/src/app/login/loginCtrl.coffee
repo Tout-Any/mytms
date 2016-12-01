@@ -8,6 +8,4 @@ angular.module('tmsApp')
     $scope.doLogin= ->
       console.log($scope.userEntity)
       $location.path('/').replace()
-
-    return
   ])

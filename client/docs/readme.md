@@ -882,6 +882,95 @@ gulp.task('reload-browser', ->
 <script src="/assets/js/app.js"></script>
 
 ```
+####2.4编写任务面板
+#####2.4.1 修改app/index/index.html如下
+```
+<div>
+    <div class="task-container col-md-8 col-sm-7 no-padding-left padding-right-sm hidden-xs">
+        <div class="panel panel-primary">
+            <div class="panel-heading">便签
+                <button class="btn btn-danger btn-xs pull-right">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </button>
+            </div>
+            <div class="panel-body"></div>
+        </div>
+    </div>
+    <div class="slide-right col-md-4 col-sm-5 col-xs-12 no-padding-right padding-left-sm">
+        <div class="panel panel-primary">
+            <div class="panel-heading">任务面板</div>
+            <div class="panel-body">
+                <div class="task-part">
+                    <form ng-submit="addTask();">
+                        <input type="text" class="form-control" placeholder="需要做什么？" required ng-model="task.description"/>
+                    </form>
+                    <table class="table table-striped table-bordered table-hover task-list">
+                        <tr ng-repeat="task in taskList track by $index">
+                            <td class="text-center task-check no-padding-left no-padding-right">
+                                <input type="checkbox" ng-model="task.checked"/></td>
+                            <td ng-class="{'task-completed': task.checked}">{{task.description}} </td>
+                            <td class="text-center task-operate no-padding-left no-padding-right">
+                                <div class="btn-group">
+                                    <button class="btn btn-info btn-xs">编辑</button>
+                                    <button class="btn btn-danger btn-xs">删除</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+#####2.4.2修改/css/index.css如下
+```
+.task-container,
+.slide-right{
+    height: 100%;
+    position: fixed;
+}
+.task-container > .panel,
+.slide-right > .panel{
+    height: 100%;
+}
+.slide-right{
+    right: 0;
+}
+.no-padding-left{
+    padding-left: 0 !important;
+}
+.no-padding-right{
+    padding-right: 0 !important;
+}
+.padding-left-sm{
+    padding-left: 5px;
+}
+.pandding-right-sm{
+    padding-right: 5px;
+}
+
+.task-list .task-check{
+    width: 20px;
+}
+.task-list .task-operate{
+    width: 80px;
+}
+.task-list .task-completed{
+    text-decoration: line-through;
+    color: lightgray;
+}
+
+@media( max-width: 767px){
+    .padding-left-sm{
+        padding-left: 0;
+    }
+}
+
+```
+#####2.4.3 修改/app/index/index.coffee如下
+```
+```
 
 
 
