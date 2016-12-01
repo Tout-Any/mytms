@@ -1,69 +1,89 @@
-gulp=require('gulp')
-del=require('del')
+
+fs = require('fs')
+gulp = require('gulp')
 runSequence = require('run-sequence')
-uglify=require('gulp-uglify')
-minifyCss=require('gulp-minify-css')
+del = require('del')
+uglify = require('gulp-uglify')
 concat = require('gulp-concat')
-#unCss = require('gulp-uncss')
+minifyCss = require('gulp-minify-css')
+# unCss = require('gulp-uncss')
 browserSync = require('browser-sync').create()
 
-gulp.task('default',(callback)->
-   runSequence(['clean'],['build'],['server','watch'],callback)
+# 读取assets.json文件
+assets = JSON.parse(fs.readFileSync('assets.json'))
+
+# 默认构建任务
+gulp.task('default',(callback) ->
+  runSequence(['clean'], ['build'], ['serve', 'watch'], callback)
 )
 
-gulp.task('clean',(callback)->
-  del(['./dist'],callback)
+gulp.task('clean', (callback)->
+  del(['./dist/'], callback)
 )
 
-gulp.task('build',(callback)->
-  runSequence(['copy','minijs','minicss'],callback)
+gulp.task('build', (callback) ->
+  runSequence(
+    ['assetsJs', 'assetsCss', 'assetsFonts'],
+    ['appJs', 'appCss', 'copyHtml'],
+    callback
+  )
 )
 
-gulp.task('copy',->
-  gulp.src('./src/**/*.*')
+# 合并所有的第三方js文件为assets.js
+gulp.task('assetsJs', ->
+  gulp.src(assets.assetsJs)
+  .pipe(concat('assets.js', {newLine: ';\n'}))
+  .pipe(gulp.dest('./dist/assets/js/'))
+)
+
+#合并所有的第三方css文件为assets.css文件
+gulp.task('assetsCss', ->
+  gulp.src(assets.assetsCss)
+  .pipe(concat('assets.css', {newLine: '\n\n'}))
+  .pipe(gulp.dest('./dist/assets/css/'))
+)
+#合并字体文件
+gulp.task('assetsFonts', ->
+  gulp.src(assets.assetsFonts)
+  .pipe(gulp.dest('./dist/assets/fonts/'))
+)
+
+# 拷贝所有的html目录到dist目录下
+
+gulp.task('copyHtml', ->
+  gulp.src(['./src/**/*.html'])
   .pipe(gulp.dest('./dist/'))
 )
-
-gulp.task('minijs',->
-  gulp.src('./src/**/*.js')
-  .pipe(uglify())
-  .pipe(gulp.dest('./dist/'))
+#合并我们所有自己写的js为app.js
+gulp.task('appJs', ->
+  gulp.src(assets.appJs)
+  .pipe(concat('app.js', {newLine: ';\n'}))
+  .pipe(gulp.dest('./dist/assets/js/'))
 )
-gulp.task('minicss',->
-  gulp.src('./src/**/*.css')
-  .pipe(minifyCss())
-  .pipe(concat('app.css',{newLine:'\n\n'}))
- # .pipe(unCss())
+#合并我们所有自己写的css文件为app.css
+gulp.task('appCss', ->
+  gulp.src(assets.appCss)
+  .pipe(concat('app.css', {newLine: '\n\n'}))
   .pipe(gulp.dest('./dist/assets/css/'))
 )
 
-gulp.task('concat',->
-  gulp.src('./src/*.js')
-  .pipe(concat('all.js',{newLine:';\n'}))
-  .pipe(gulp.dest('./dist/'))
+gulp.task('serve', ->
+  browserSync.init({
+    server: {
+      baseDir: './dist/'
+    }
+    port: 7411
+  })
 )
 
-gulp.task('server', ->
-   browserSync.init({
-     server:{
-
-       baseDir:'./dist/'
-     }
-     port:7411
-
-   })
+gulp.task('watch', ->
+  gulp.watch('./src/**/*.*', ['reload'])
 )
 
-#监视文件是否改变
-gulp.task('watch',->
-  gulp.watch('./src/**/*.*',['reload'])
+gulp.task('reload', (callback)->
+  runSequence(['build'], ['reload-browser'], callback)
 )
 
-#把上面的任务再做一次
-gulp.task('reload',(callback)->
-   runSequence(['copy','minijs','minicss'],['reload-browser'],callback)
-)
-
-gulp.task('reload-browser',->
-   browserSync.reload()
+gulp.task('reload-browser', ->
+  browserSync.reload()
 )

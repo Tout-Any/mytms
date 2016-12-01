@@ -704,7 +704,184 @@ angular.module('tmsApp')
     border: 1px solid red;
 }
 ```
+####2.3完善主页页面/app/index/index.html
+#####2.3.1修改/app/index/index.html 如下
+```
+<div>
+    <div class="task-container col-md-8 col-xs-8 no-padding-left padding-right-sm">
+        <div class="panel panel-primary">
+            <div class="panel-heading">便签
+                <button class="btn btn-danger btn-xs pull-right">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </button>
+            </div>
+            <div class="panel-body"></div>
+        </div>
+    </div>
+    <div class="slide-right col-md-4 col-xs-8 no-padding-right padding-left-sm">
+        <div class="panel panel-primary">
+            <div class="panel-heading">任务面板</div>
+            <div class="panel-body">
 
+            </div>
+        </div>
+    </div>
+</div>
+```
+#####2.3.2修改index.css如下
+```
+.task-container,
+.slide-right{
+    height: 100%;
+    position: fixed;
+}
+.task-container > .panel,
+.slide-right > .panel{
+    height: 100%;
+}
+.slide-right{
+    right: 0;
+}
+.no-padding-left{
+    padding-left: 0;
+}
+.no-padding-right{
+    padding-right: 0;
+}
+.padding-left-sm{
+    padding-left: 5px;
+}
+.pandding-right-sm{
+    padding-right: 5px;
+}
+```
+#####2.3.3 重新构建gulp任务,规划js和css文件的合并
+    1.在client根目录下新建assets.json文件,配置合并文件的路径
+```
+{
+  "assetsJs": [
+    "./src/assets/plugins/jquery/jquery.js",
+    "./src/assets/plugins/bootstrap/js/bootstrap.js",
+    "./src/assets/plugins/angular/angular.js",
+    "./src/assets/plugins/angular/angular-*.js"
+  ],
+  "assetsCss": [
+    "./src/assets/plugins/bootstrap/css/bootstrap.css"
+  ],
+  "assetsFonts": [
+    "./src/assets/plugins/bootstrap/fonts/*.*"
+  ],
+  "appJs": [
+    "./src/index.js",
+    "./src/app/**/*.js"
+  ],
+  "appCss": [
+    "./src/css/*.css"
+  ]
+}
+```
+    2.修改gulp任务文件gulpfile.coffee文件如下
+```
+
+fs = require('fs')
+gulp = require('gulp')
+runSequence = require('run-sequence')
+del = require('del')
+uglify = require('gulp-uglify')
+concat = require('gulp-concat')
+minifyCss = require('gulp-minify-css')
+# unCss = require('gulp-uncss')
+browserSync = require('browser-sync').create()
+
+# 读取assets.json文件
+assets = JSON.parse(fs.readFileSync('assets.json'))
+
+# 默认构建任务
+gulp.task('default',(callback) ->
+  runSequence(['clean'], ['build'], ['serve', 'watch'], callback)
+)
+
+gulp.task('clean', (callback)->
+  del(['./dist/'], callback)
+)
+
+gulp.task('build', (callback) ->
+  runSequence(
+    ['assetsJs', 'assetsCss', 'assetsFonts'],
+    ['appJs', 'appCss', 'copyHtml'],
+    callback
+  )
+)
+
+# 合并所有的第三方js文件为assets.js
+gulp.task('assetsJs', ->
+  gulp.src(assets.assetsJs)
+  .pipe(concat('assets.js', {newLine: ';\n'}))
+  .pipe(gulp.dest('./dist/assets/js/'))
+)
+
+#合并所有的第三方css文件为assets.css文件
+gulp.task('assetsCss', ->
+  gulp.src(assets.assetsCss)
+  .pipe(concat('assets.css', {newLine: '\n\n'}))
+  .pipe(gulp.dest('./dist/assets/css/'))
+)
+#合并字体文件
+gulp.task('assetsFonts', ->
+  gulp.src(assets.assetsFonts)
+  .pipe(gulp.dest('./dist/assets/fonts/'))
+)
+
+# 拷贝所有的html目录到dist目录下
+
+gulp.task('copyHtml', ->
+  gulp.src(['./src/**/*.html'])
+  .pipe(gulp.dest('./dist/'))
+)
+#合并我们所有自己写的js为app.js
+gulp.task('appJs', ->
+  gulp.src(assets.appJs)
+  .pipe(concat('app.js', {newLine: ';\n'}))
+  .pipe(gulp.dest('./dist/assets/js/'))
+)
+#合并我们所有自己写的css文件为app.css
+gulp.task('appCss', ->
+  gulp.src(assets.appCss)
+  .pipe(concat('app.css', {newLine: '\n\n'}))
+  .pipe(gulp.dest('./dist/assets/css/'))
+)
+
+gulp.task('serve', ->
+  browserSync.init({
+    server: {
+      baseDir: './dist/'
+    }
+    port: 7411
+  })
+)
+
+gulp.task('watch', ->
+  gulp.watch('./src/**/*.*', ['reload'])
+)
+
+gulp.task('reload', (callback)->
+  runSequence(['build'], ['reload-browser'], callback)
+)
+
+gulp.task('reload-browser', ->
+  browserSync.reload()
+)
+
+```
+    3.修改index.html里的css文件和js文件的引入
+```
+<link rel="stylesheet" href="/assets/css/assets.css">
+<link rel="stylesheet" href="/assets/css/app.css">
+
+<script src="/assets/js/assets.js"></script>
+<script src="/assets/js/app.js"></script>
+
+```
 
 
 

@@ -1,5 +1,5 @@
 angular.module('tmsApp')
-  .controller('registCtrl',['$scope',($scope) ->
+  .controller('RegistCtrl',['$scope',($scope) ->
       $scope.userEntity={
               username:'',
               password:'',
