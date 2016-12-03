@@ -6,6 +6,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/.3.9.1@gulp/node_modules/liftoff/node_modules/resolve/test/resolver/mug.js" />
         <item url="file://$PROJECT_DIR$/src/app/login/loginCtrl.js" />
         <item url="file://$PROJECT_DIR$/node_modules/rechoir/node_modules/resolve/test/resolver/mug.js" />
+        <item url="file://$PROJECT_DIR$/src/servers/errorHandler.js" />
         <item url="file://$PROJECT_DIR$/node_modules/browser-sync/node_modules/browser-sync-ui/node_modules/weinre/lib-src/service/WeinreTargetCommands.js" />
         <item url="file://$PROJECT_DIR$/node_modules/browser-sync/node_modules/browser-sync-ui/node_modules/weinre/lib-src/service/WeinreClientCommands.js" />
         <item url="file://$PROJECT_DIR$/node_modules/browser-sync/node_modules/browser-sync-ui/node_modules/weinre/lib-src/cli.js" />
@@ -42,6 +43,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/Channel.js" />
         <item url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/cli.js" />
         <item url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/jsonBodyParser.js" />
+        <item url="file://$PROJECT_DIR$/src/config/config.js" />
         <item url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/weinre.js" />
         <item url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/dumpingHandler.js" />
         <item url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/channelManager.js" />
@@ -114,18 +116,19 @@
         <item url="file://$PROJECT_DIR$/node_modules/gulp/node_modules/vinyl-fs/node_modules/glob-watcher/test/fixtures/test.js" />
         <item url="file://$PROJECT_DIR$/node_modules/.0.6.1@browser-sync-ui/node_modules/weinre/lib-src/HttpChannelHandler.js" />
         <item url="file://$PROJECT_DIR$/gulpfile.js" />
-        <item url="file://$PROJECT_DIR$/dist/demo/demo.js" />
         <item url="file://$PROJECT_DIR$/node_modules/gulp/node_modules/liftoff/node_modules/resolve/test/resolver/mug.js" />
-        <item url="file://$PROJECT_DIR$/src/demo/demo.js" />
         <item url="file://$PROJECT_DIR$/src/index.js" />
         <item url="file://$PROJECT_DIR$/node_modules/.2.3.0@liftoff/node_modules/rechoir/node_modules/resolve/test/resolver/mug.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/dist/demo/demo.js" />
+      <root url="file://$PROJECT_DIR$/src/demo/demo.js" />
       <root url="file://$PROJECT_DIR$/node_modules/liftoff/node_modules/resolve/test/resolver/mug.js" />
       <root url="file://$PROJECT_DIR$/node_modules/.3.9.1@gulp/node_modules/liftoff/node_modules/resolve/test/resolver/mug.js" />
       <root url="file://$PROJECT_DIR$/src/app/login/loginCtrl.js" />
       <root url="file://$PROJECT_DIR$/node_modules/rechoir/node_modules/resolve/test/resolver/mug.js" />
+      <root url="file://$PROJECT_DIR$/src/services/tmsUtils.js" />
       <root url="file://$PROJECT_DIR$/node_modules/browser-sync/node_modules/browser-sync-ui/node_modules/weinre/lib-src/service/WeinreTargetCommands.js" />
       <root url="file://$PROJECT_DIR$/node_modules/browser-sync/node_modules/browser-sync-ui/node_modules/weinre/lib-src/service/WeinreClientCommands.js" />
       <root url="file://$PROJECT_DIR$/node_modules/browser-sync/node_modules/browser-sync-ui/node_modules/weinre/lib-src/cli.js" />
@@ -162,6 +165,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/Channel.js" />
       <root url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/cli.js" />
       <root url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/jsonBodyParser.js" />
+      <root url="file://$PROJECT_DIR$/src/config/config.js" />
       <root url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/weinre.js" />
       <root url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/dumpingHandler.js" />
       <root url="file://$PROJECT_DIR$/node_modules/.2.0.0-pre-I0Z7U9OV@weinre/lib-src/channelManager.js" />
@@ -234,9 +238,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/gulp/node_modules/vinyl-fs/node_modules/glob-watcher/test/fixtures/test.js" />
       <root url="file://$PROJECT_DIR$/node_modules/.0.6.1@browser-sync-ui/node_modules/weinre/lib-src/HttpChannelHandler.js" />
       <root url="file://$PROJECT_DIR$/gulpfile.js" />
-      <root url="file://$PROJECT_DIR$/dist/demo/demo.js" />
       <root url="file://$PROJECT_DIR$/node_modules/gulp/node_modules/liftoff/node_modules/resolve/test/resolver/mug.js" />
-      <root url="file://$PROJECT_DIR$/src/demo/demo.js" />
       <root url="file://$PROJECT_DIR$/src/index.js" />
       <root url="file://$PROJECT_DIR$/node_modules/.2.3.0@liftoff/node_modules/rechoir/node_modules/resolve/test/resolver/mug.js" />
     </CLASSES>

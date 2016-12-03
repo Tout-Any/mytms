@@ -18,5 +18,8 @@
     "gulp-uglify": "^2.0.0",
     "gulp-uncss": "^1.0.6",
     "run-sequence": "^1.2.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.1"
   }
 }

@@ -11,7 +11,11 @@
     </div>
     <div class="slide-right col-md-4 col-sm-5 col-xs-12 no-padding-right padding-left-sm">
         <div class="panel panel-primary">
-            <div class="panel-heading">任务面板</div>
+            <div class="panel-heading">任务面板
+              <button class="btn btn-danger btn-xs pull-right" ng-click="exit()">
+                  <i class="glyphicon glyphicon-lock"></i>退出系统
+              </button>
+            </div>
             <div class="panel-body">
                 <div class="task-part">
                     <form ng-submit="addTask();">

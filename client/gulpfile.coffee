@@ -11,7 +11,7 @@ browserSync = require('browser-sync').create()
 
 # 读取assets.json文件
 assets = JSON.parse(fs.readFileSync('assets.json'))
-
+console.log(assets)
 # 默认构建任务
 gulp.task('default',(callback) ->
   runSequence(['clean'], ['build'], ['serve', 'watch'], callback)

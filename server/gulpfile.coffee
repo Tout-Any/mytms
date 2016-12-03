@@ -15,7 +15,7 @@ gulp.task('clean',(callback) ->
 
 gulp.task('copy', ->
 
-  gulp.src('./src/**/*.js')
+  gulp.src(['./src/**/*.js','./src/database*/*.db'])
   .pipe(gulp.dest('./dist/'))
 )
 

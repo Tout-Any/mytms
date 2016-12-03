@@ -6,6 +6,9 @@
         description: ''
       };
       $scope.taskList = [];
+      $scope.exit = function() {
+        return $location.path('/login');
+      };
       return $scope.addTask = function() {
         var task;
         task = angular.copy($scope.task);

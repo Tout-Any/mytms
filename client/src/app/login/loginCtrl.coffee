@@ -1,11 +1,19 @@
 angular.module('tmsApp')
-  .controller('LoginCtrl',['$scope','$location',($scope,$location) ->
+  .controller('LoginCtrl',['$scope','$http','$location','tmsUtils'
+  ($scope,$http,$location,tmsUtils) ->
     $scope.userEntity={
       username:'',
-      password:''
+      password:'',
+      rememberMe:false
     }
-    $scope.rememberMe =false;
+
     $scope.doLogin= ->
-      console.log($scope.userEntity)
-      $location.path('/').replace()
-  ])
+      $http.post("#{Tms.apiAddr}/api/user/login",$scope.userEntity)
+      .then((res) ->
+        console.log($scope.userEntity)
+        $location.path('/').replace()
+      ,
+        tmsUtils.processHttpError
+      )
+
+])

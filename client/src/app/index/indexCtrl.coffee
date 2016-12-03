@@ -6,6 +6,9 @@ angular.module('tmsApp')
   }
   $scope.taskList = []
 
+  $scope.exit = ->
+    $location.path('/login')
+
   # UI添加任务对象
   $scope.addTask = ->
     task = angular.copy($scope.task)

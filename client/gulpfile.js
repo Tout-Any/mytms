@@ -20,6 +20,8 @@
 
   assets = JSON.parse(fs.readFileSync('assets.json'));
 
+  console.log(assets);
+
   gulp.task('default', function(callback) {
     return runSequence(['clean'], ['build'], ['serve', 'watch'], callback);
   });

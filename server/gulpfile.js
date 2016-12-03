@@ -21,7 +21,7 @@
   });
 
   gulp.task('copy', function() {
-    return gulp.src('./src/**/*.js').pipe(gulp.dest('./dist/'));
+    return gulp.src(['./src/**/*.js', './src/database*/*.db']).pipe(gulp.dest('./dist/'));
   });
 
   gulp.task('server', function() {
